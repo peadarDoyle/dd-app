@@ -1,0 +1,45 @@
+﻿@using DirectDebits.ViewModels.Batches
+@using DirectDebits.Common.Utility
+
+@model BatchHeaderViewModel
+
+@{ 
+    ViewBag.Title = $"{Html.DisplayNameFor(x => x.Number)} {Html.DisplayFor(x => x.Number)}";
+}
+
+<input id="batch-type" type="hidden" value="@Model.Type.ToString().ToLower()"/>
+<ol class="breadcrumb">
+    <li><a href="@($"/batches/{Model.Type.ToString().ToLower()}")">Home</a></li>
+    <li class="active">View</li>
+</ol>
+<div id="batch-record" class="page-container">
+
+    @{ Html.RenderPartial("_FileModal", Model); }
+    <div>
+        <button id="generate-file" class="btn btn-primary">Create Bank File</button>
+        <span id="batch-no">@Model.Number</span>
+        <h3><span class="page-title">@Model.Type.GetDisplayName()</span>s</h3>
+        <h4>@ViewBag.Title</h4>
+        <br/>
+    </div>
+    <div id="summary">
+        <label>@Html.DisplayNameFor(x => x.CreatedOn)</label>
+        <span>@Html.DisplayFor(x => x.CreatedOn)</span>
+        <br/>
+        <label>@Html.DisplayNameFor(x => x.ProcessDate)</label>
+        <span>@Html.DisplayFor(x => x.ProcessDate)</span>
+        <br/>
+        <label>@Html.DisplayNameFor(x => x.Total)</label>
+        <span>@Html.DisplayFor(x => x.Total)</span>
+        <br/>
+        <label>@Html.DisplayNameFor(x => x.AccountsAffectedCount)</label>
+        <span>@Html.DisplayFor(x => x.AccountsAffectedCount)</span>
+    </div>
+    <div id="messages">
+        @Html.ValidationSummary("The following issues occurred when attempting to create the bank file:")
+    </div>
+    <div id="report">
+        <i id="report-spinner" class="fa fa-spinner fa-pulse fa-spin fa-1x fa-fw" aria-hidden="true"></i>
+        <span>Loading report...</span>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@using DirectDebits.ViewModels.Batches
+
+@model BatchHeaderViewModel
+
+@{ 
+
+}
+<li>
+    <div>
+        <div class="batch-number">
+            <a href="@($"/batches/{Model.Type.ToString().ToLower()}/view/{Model.Number}")">@($"{Html.DisplayNameFor(x => x.Number)} {Html.DisplayFor(x => x.Number)}")</a>
+        </div>
+        <div class="date">@Html.DisplayFor(x => x.CreatedOn)</div>
+    </div>
+    <div>
+        <div class="total">
+            <label>@Html.DisplayNameFor(x => x.Total)</label>
+            <span class="sum">@Html.DisplayFor(x => x.Total)</span>
+        </div><div class="customers">
+            <label>@Html.DisplayNameFor(x => x.AccountsAffectedCount)</label>
+            <span>@Html.DisplayFor(x => x.AccountsAffectedCount)</span>
+        </div>
+    </div>
+</li>

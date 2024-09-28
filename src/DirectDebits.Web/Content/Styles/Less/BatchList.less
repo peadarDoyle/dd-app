@@ -1,0 +1,67 @@
+﻿.page-container {
+
+    h3 {
+        margin-top: 0px;
+    }
+}
+
+
+#payment-allocations {
+  padding-left: 0;
+
+    > li {
+      list-style: none;
+      padding: 15px;
+      border-bottom: solid 1px lightgray;
+
+      > div:first-of-type {
+        .date {
+          float: right;
+        }
+        > div {
+          display: inline-block;
+        }
+      }
+      
+      > div:nth-of-type(2) {
+        margin-top: 10px;
+        
+        > div {
+          display: inline-block;
+          width: 33%;
+        }
+      }
+    }
+}
+
+#pager {
+    text-align: left;
+    font-size: 14px;
+
+    span {
+        color: lightgray;
+        border: solid 1px whitesmoke;
+    }
+
+    a {
+        color: #575757;
+        border: solid 1px lightgray;
+    }
+
+    .current,
+    a:hover {
+        color: white;
+        text-decoration: none;
+        background-color: #009fe4;
+    }
+
+    span, a {
+        display: inline-block;
+        padding: 2px 7px;
+        margin: 5px;
+    }
+
+    p {
+        display: inline-block;
+    }
+}

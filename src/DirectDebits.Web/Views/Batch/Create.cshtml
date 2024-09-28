@@ -1,0 +1,68 @@
+﻿@using DirectDebits.ViewModels.Batches
+@using DirectDebits.Common.Utility
+
+@model CreateBatchSettingsViewModel
+
+@{ 
+    ViewBag.Title = $"Create {Model.Type.GetDisplayName()}";
+}
+
+<input id="batch-type" type="hidden" value="@Model.Type.ToString().ToLower()"/>
+<ol class="breadcrumb">
+    <li><a href="@($"/batches/{Model.Type.ToString().ToLower()}")">Home</a></li>
+    <li class="active">Create</li>
+</ol>
+<div id="new-batch" class="page-container">
+    <p class="page-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Create new @Model.Type.GetDisplayName() transactions by making allocations in the below table</p>
+    <h3><span class="page-title">@Model.Type.GetDisplayName()</span>s</h3>
+
+    @{ Html.RenderPartial("_AllocateAllModal"); }
+    @{ Html.RenderPartial("_ProcessModal"); }
+    @{ Html.RenderPartial("_InvoiceModal"); }
+    @{ Html.RenderPartial("_Filter", Model.Filter, new ViewDataDictionary()); }
+
+
+    <div>
+        <i id="primary-allocation-spinner" class="fa fa-spinner fa-pulse fa-spin fa-1x fa-fw" aria-hidden="true"></i>
+        <div class="btn-group">
+            <button id="allocate-all" type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                Allocate <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="all-invoices" href="#">All Invoices</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a class="period1-invoices" href="#">@Model.Periods[0] Day Invoices</a></li>
+                <li><a class="period2-invoices" href="#">@Model.Periods[1] Day Invoices</a></li>
+                <li><a class="period3-invoices" href="#">@Model.Periods[2] Day Invoices</a></li>
+                <li><a class="old-period-invoices" href="#">Older Invoices</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button id="deallocate-all" type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                Deallocate <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="all-invoices" href="#">All Invoices</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a class="period1-invoices" href="#">@Model.Periods[0] Day Invoices</a></li>
+                <li><a class="period2-invoices" href="#">@Model.Periods[1] Day Invoices</a></li>
+                <li><a class="period3-invoices" href="#">@Model.Periods[2] Day Invoices</a></li>
+                <li><a class="old-period-invoices" href="#">Older Invoices</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        @{ Html.RenderPartial("_AllocationTable", Model.Periods); }
+        <div id="process">
+            <div class="button-container">
+                <button class="btn btn-primary" disabled>Process <span class="batch-setting-name"></span></button>
+            </div>
+            <div id="validation">
+            </div>
+            <div id="create-inprocess" class="alert alert-warning" role="alert">
+                <i class="fa fa-spinner fa-pulse fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+                <p>The @Model.Type.GetDisplayName()s are currently being allocated in Exact Online. Please wait for this process to complete.</p>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,50 @@
+﻿@using DirectDebits.ViewModels.User
+
+@model GetRegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div id="register">
+    <h2>@ViewBag.Title</h2>
+    @using (Html.BeginForm("externalloginconfirmation", "user", new { returnurl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <p class="text-info">
+            You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+        </p>
+        if(Model.DivisionSelection != null)
+        {
+            <p class="text-info">
+                Select which division you want to use for Direct Debits. Then click the Register button to finish the registration process.
+            </p>
+            <div>
+                <p>
+                    <label>Company</label><span>@Model.CompanyName</span>
+                </p>
+                <p>
+                    <label>User</label><span>@Model.Username</span>
+                </p>
+                <label>Division</label>
+                @Html.DropDownList("DivisionCode", Model.DivisionSelection)
+            </div>
+         }
+        else
+        {
+            <p class="text-info">
+                The division @Model.ExistingDivisionName has already been created. Register to get access to it.
+            </p>
+            <p>
+                <label>Company</label><span>@Model.CompanyName</span>
+            </p>
+            <p>
+                <label>User</label><span>@Model.Username</span>
+            </p>
+         }
+        <input id="register-button" type="submit" class="btn btn-primary" value="Register" />
+        <i id="register-spinner" class="fa fa-spinner fa-pulse fa-spin fa-1x fa-fw"></i>
+    }
+</div>

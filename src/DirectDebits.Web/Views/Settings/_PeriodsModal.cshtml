@@ -1,0 +1,28 @@
+﻿@using DirectDebits.ViewModels.Settings
+
+@model ReadPeriodsViewModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="periods-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Update Invoice Periods</h4>
+            </div>
+            @using (Html.BeginForm("UpdatePeriods", "Settings", new { type = Model.BatchType.ToString().ToLower() }, FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <ol>
+                        <li>@Html.LabelFor(x => x.Period1)<input type="text" name="Period1" value="@Model.Period1" autocomplete="off" />days</li>
+                        <li>@Html.LabelFor(x => x.Period2)<input type="text" name="Period2" value="@Model.Period2" autocomplete="off" />days</li>
+                        <li>@Html.LabelFor(x => x.Period3)<input type="text" name="Period3" value="@Model.Period3" autocomplete="off" />days</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-primary" value="Save"/>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

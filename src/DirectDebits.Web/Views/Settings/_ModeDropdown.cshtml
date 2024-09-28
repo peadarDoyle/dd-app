@@ -1,0 +1,12 @@
+﻿@using DirectDebits.ViewModels.Settings
+
+@model ModeDropdownViewModel
+
+@if (Model.HasDirectDebitsFeature && Model.HasPaymentsFeature)
+{
+    <span>MODE</span>
+    <select>
+        <option name="directdebit" value="directdebit">Direct Debits</option>
+        <option name="payment" value="payment">Payments</option>
+    </select>
+}

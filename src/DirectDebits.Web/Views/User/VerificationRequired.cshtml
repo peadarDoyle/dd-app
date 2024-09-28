@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Verification Required";
+}
+
+<div id="verification-required">
+    <h2>@ViewBag.Title</h2>
+    <div id="lockout-info">
+        <p>Your account has not been verified (@DateTime.Now.ToString("dd MMM yyy HH:mm:ss"))</p>
+    </div>
+    <h4>Existing Customer?</h4>
+    <p>Contact Synergy Network support to verify your account for use with Direct Debits.</p>
+    <h4>New Customer?</h4>
+    <p>Please contact Synergy Network to discuss your requirements.</p>
+    <div>
+        <a href="http://www.synergynet.ie/contact-us/" target="_blank">Contact Details</a>
+    </div>
+    <div id="recheck-container">
+        <a class="btn btn-primary" href="/user/externallogincallback?returnurl=%2f">Recheck Verfication</a>
+    </div>
+</div>

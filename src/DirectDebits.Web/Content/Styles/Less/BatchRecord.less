@@ -1,0 +1,86 @@
+﻿#batch-record {
+    @media print {
+        #generate-file, #messages * {
+            visibility: hidden;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    #generate-file {
+      float:right;
+    }
+
+    #summary {
+        label {
+            width: 90px;
+        }
+    }
+
+    #report {
+      margin-top: 15px;
+      
+      tr {
+        td:first-of-type {
+          width: 130px;
+        }
+        td:nth-of-type(2) {
+          width: 430px;
+        }
+        td:nth-of-type(3) {
+          width: 130px;
+          text-align: right;
+        }
+      }
+
+      thead > tr > th:nth-child(3)
+      {
+          text-align: right;
+      }
+
+      tfoot  {
+
+          td#total {
+              text-align: left;
+          }
+
+          td {
+              text-align: right;
+              font-weight: bold;
+              border-top: 1px solid black;
+          }
+      }
+    }
+
+    #report-spinner {
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    #batch-no {
+        display: none;
+    }
+
+    #process-date {
+        vertical-align: top;
+        margin-right: 3px;
+    }
+
+    .input-group.date {
+        display: none;
+        margin-top: 10px;
+    }
+
+    #hasnewprocessdate {
+        vertical-align: top;
+        margin-left: 5px;
+    }
+
+    #messages p,
+    #messages .validation-summary-errors {
+        margin-top: 15px;
+    }
+}

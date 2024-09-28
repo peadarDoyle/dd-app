@@ -1,0 +1,29 @@
+﻿@using DirectDebits.ViewModels.Batches
+
+@model CreateBatchFilterViewModel
+
+<div id="classification-filter">
+    @if (Model == null)
+    {
+        <p>Note: access your settings to setup filtering</p>
+    }
+    else if (Model.Values.Count == 0)
+    {
+        <p>The configured classification (@Model.Name) has no values</p>
+    }
+    else
+    {
+        <p>Filter by Classification: <label>@Model.Name</label></p>
+        <div>
+            <select data-placeholder="Select filters..." class="chosen-select" tabindex="-1" multiple>
+                @foreach (var filter in Model.Values)
+                {
+                    <option value="@filter.Key">@filter.Value</option>
+                }
+            </select>
+        </div>
+    }
+</div>
+<div id="load-accounts">
+    <button class="btn btn-default">Load <span class="batch-setting-account-type"></span>s</button>
+</div>

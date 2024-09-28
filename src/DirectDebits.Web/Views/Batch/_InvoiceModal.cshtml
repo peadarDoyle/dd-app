@@ -1,0 +1,39 @@
+﻿@* The data-backdrop is set to static so clicking outside the modal doesn't cause it to close *@
+<div class="modal fade" tabindex="-1" role="dialog" id="invoice-modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Allocate Invoices</h4>
+            </div>
+            <div class="modal-body">
+                <button id="expand-all-rows" class="btn btn-link" style="display:none; float: right; ">Expand All Rows</button>
+                <p><label>ID</label><span id="invoice-modal-id"></span></p>
+                <p><label>Account</label><span id="invoice-modal-name"></span></p>
+                <p><label>Period</label><span id="invoice-modal-period"></span></p>
+                <button id="modal-allocate" class="btn btn-sm btn-default" disabled>Allocate</button>
+                <button id="modal-deallocate" class="btn btn-sm btn-default" disabled>Deallocate</button>
+                <table id="modal-allocation-table" class="table">
+                    <thead>
+                        <tr>
+                            <th class="check"><input type="checkbox" /></th>
+                            <th class="id">ID</th>
+                            <th class="your-ref">Your Ref</th>
+                            <th class="invoice-date">Invoice Date</th>
+                            <th class="account">Amount</th>
+                            <th class="age1">Allocate</th>
+                            <th class="expando"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="modal-errors" class="validation-summary-errors">
+            </div>
+            <div class="modal-footer">
+                <i id="modal-allocation-spinner" class="fa fa-spinner fa-pulse fa-spin fa-1x fa-fw" aria-hidden="true"></i>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,152 @@
+﻿* {
+    margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  background-color: #eee !important;
+}
+
+.breadcrumb {
+  width: 1128px;
+  margin: 10px auto 0px auto !important;
+  background-color: transparent !important;
+  padding-left: 2px !important;
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .active {
+    color: gray;
+  }
+}
+
+.page-container {
+  border: solid 1px #ddd;
+  border-top: solid 3px #009fe4;
+  width: 1128px;
+  background-color: white;
+  min-height: 500px;
+  margin: 0px auto 50px auto;
+  padding: 30px 50px 50px 50px;
+}
+
+.page-title {
+    padding-bottom: 5px;
+}
+
+.page-info {
+    float: right;
+
+    .glyphicon {
+        color: #337ab7;
+        vertical-align: text-top;
+        padding-right: 5px;
+    }
+}
+
+label {
+  color: #222;
+  margin-right: 10px;
+}
+
+h4 {
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+  color: gray;
+}
+
+select {
+    padding: 5px;
+}
+
+.fa-spinner {
+    color: #2e6da4;
+}
+
+.input-group.date {
+    width: 150px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .page-container * {
+    visibility: visible;
+  }
+  .page-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.field-validation-error {
+    color: #b94a48;
+    display: inline-block;
+    *display: inline;
+    padding-left: 5px;
+    vertical-align: middle;
+    *zoom: 1;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+    color: #b94a48;
+    border-color: #b94a48;
+}
+
+.input-validation-error:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: 0 0 6px #d59392;
+  -moz-box-shadow: 0 0 6px #d59392;
+  box-shadow: 0 0 6px #d59392;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -267px;
+}
+
+.footer-wrapper, .push {
+    height: 267px;
+}
+
+.total-failure {
+    margin: 50px auto;
+    width: 50%;
+    
+    .fa-exclamation-triangle {
+        margin-right: 15px;
+        color: gray;
+    }
+}

@@ -1,0 +1,33 @@
+﻿@using DirectDebits.ViewModels.Batches
+
+@model BatchHeaderViewModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="generate-file-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create Bank File</h4>
+            </div>
+            @using (Html.BeginForm("CreateBankFile", "Banking", "POST"))
+            {
+                <div class="modal-body">
+                    <p>The date the bank will process the transactions is <span class="label label-warning">@Html.DisplayFor(m => m.ProcessDate)</span></p>
+                    <p>If required, use the below check-box to apply a different date to the current download.</p>
+                    <span>Apply a different process date</span>@Html.CheckBox("hasnewprocessdate")
+                    <input name="batchNum" type="hidden" value="@Model.Number" />
+                    <div class="input-group date" data-provide="datepicker">
+                        <input id="process-date-selector" name="processdate" type="text" class="form-control" autocomplete="off">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-primary"  value="Download"/>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

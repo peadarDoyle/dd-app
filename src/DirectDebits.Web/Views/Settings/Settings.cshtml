@@ -1,0 +1,64 @@
+﻿@using DirectDebits.ViewModels.Settings
+@using DirectDebits.Common.Utility
+
+@model SettingsViewModel
+
+@{ 
+    ViewBag.Title = $"{Model.Type.GetDisplayName()} Settings";
+}
+
+<input id="batch-type" type="hidden" value="@Model.Type.ToString().ToLower()"/>
+<ol class="breadcrumb">
+    <li><a href="@($"/batches/{Model.Type.ToString().ToLower()}")">Home</a></li>
+    <li class="active">Settings</li>
+</ol>
+<div id="settings" class="page-container">
+    <p class="page-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Here you can update your @Model.Type.GetDisplayName() settings.</p>
+    <h3><span class="page-title">@Model.Type.GetDisplayName()</span>s</h3>
+
+    @{ Html.RenderPartial("_PeriodsModal", Model.Periods); }
+    @{ Html.RenderPartial("_BankDetailsModal", Model.BankDetails); }
+    @{ Html.RenderPartial("_ExactConfigModal", Model.ExactConfig); }
+    @{ Html.RenderPartial("_AppConfigModal", Model.AppConfig); }
+
+    @Html.ValidationSummary("Changes did not take effect due to the following:")
+
+    <div class="row">
+        <div class="col-md-5">
+            <div id="invoice-periods">
+                <h4>Invoice Periods</h4><a href="#" class="label label-default">edit</a>
+                <ol class="list-group">
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.Periods.Period1)</label><span>@Model.Periods.Period1</span>days</li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.Periods.Period2)</label><span>@Model.Periods.Period2</span>days</li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.Periods.Period3)</label><span>@Model.Periods.Period3</span>days</li>
+                </ol>
+            </div>
+            <div id="bank-details">
+                <h4>Bank Details</h4><a href="#" class="label label-default">edit</a>
+                <ol class="list-group">
+                    <li class="list-group-item"><label>Bank</label><span>@Model.BankDetails.BankName (@Model.BankDetails.BankShorthand)</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.BankDetails.BankAccName)</label><span>@Model.BankDetails.BankAccName</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.BankDetails.BIC)</label><span>@Model.BankDetails.BIC</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.BankDetails.IBAN)</label><span>@Model.BankDetails.IBAN</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.BankDetails.AuthId)</label><span>@Model.BankDetails.AuthId</span></li>
+                </ol>
+            </div>
+            <div id="exact-config">
+                <h4>Exact Configuration</h4><a href="#" class="label label-default">edit</a>
+                <ol class="list-group">
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.ExactConfig.BankJournalCode)</label><span>@Model.ExactConfig.BankJournalCode</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.ExactConfig.TradeJournalCode)</label><span>@Model.ExactConfig.TradeJournalCode</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.ExactConfig.BankGlCode)</label><span>@Model.ExactConfig.BankGlCode</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.ExactConfig.TradeGlCode)</label><span>@Model.ExactConfig.TradeGlCode</span></li>
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.ExactConfig.ClassificationFilterId)</label><span>@Model.ExactConfig.ClassificationFilterId</span></li>
+                </ol>
+            </div>
+            <div id="app-config">
+                <h4>System Configuration</h4><a href="#" class="label label-default">edit</a>
+                <ol class="list-group">
+                    <li class="list-group-item"><label>@Html.DisplayNameFor(x => x.AppConfig.LowLevelConfig)</label><span>@Model.AppConfig.LowLevelConfig</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

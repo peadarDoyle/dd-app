@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Login Failure";
+}
+
+<div id="login-failure">
+    <h2>@ViewBag.Title</h2>
+    <h3 class="text-danger">Unsuccessful login with service</h3>
+    @Html.ValidationSummary("The following issues occurred when attempting to register:")
+</div>

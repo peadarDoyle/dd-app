@@ -1,0 +1,25 @@
+﻿@using DirectDebits.ViewModels.Batches
+
+@model BatchLinesViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Amount (€)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.BatchLines)
+        {
+            Html.RenderPartial("_ViewLine", line);
+        }
+    <tbody>
+    <tfoot>
+        <tr>
+            <td id="total" colspan="2">@Html.DisplayNameFor(m => m.Total)</td>
+            <td>@Html.DisplayFor(m => m.Total)</td>
+        </tr>
+    </tfoot>
+</table>

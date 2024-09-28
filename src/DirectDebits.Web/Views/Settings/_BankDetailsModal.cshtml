@@ -1,0 +1,32 @@
+﻿@using DirectDebits.ViewModels.Settings
+
+@model ReadBankDetailsViewModel
+
+<div class="modal fade" tabindex="-1" role="dialog" id="bank-details-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Update Payment Details</h4>
+            </div>
+            @using (Html.BeginForm("UpdateBankDetails", "Settings", "POST"))
+            {
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            @{ Html.RenderAction("BankSelector", new { bankId = Model.BankId }); }
+                        </li>
+                        <li>@Html.LabelFor(x => x.BankAccName)<input type="text" name="BankAccName" value="@Model.BankAccName" autocomplete="off" /></li>
+                        <li>@Html.LabelFor(x => x.BIC)<input type="text" name="Bic" value="@Model.BIC" autocomplete="off" /></li>
+                        <li>@Html.LabelFor(x => x.IBAN)<input type="text" name="Iban" value="@Model.IBAN" autocomplete="off" /></li>
+                        <li>@Html.LabelFor(x => x.AuthId)<input type="text" name="AuthId" value="@Model.AuthId" autocomplete="off" /></li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-primary" value="Save"/>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

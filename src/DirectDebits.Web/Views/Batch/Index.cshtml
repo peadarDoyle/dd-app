@@ -1,0 +1,47 @@
+﻿@using DirectDebits.ViewModels.Batches
+@using DirectDebits.Common.Utility
+@using MvcPaging
+
+@model BatchListViewModel
+@{
+    ViewBag.Title = "Batches";
+
+    int showingFrom = 0, showingTo = 0;
+
+    if (Model.Batches.TotalItemCount != 0)
+    {
+        showingFrom = ((Model.Batches.PageNumber - 1) * Model.Batches.PageSize) + 1;
+        showingTo = showingFrom + Model.Batches.Count() - 1;
+    }
+}
+
+<input id="batch-type" type="hidden" value="@Model.Type.ToString().ToLower()"/>
+<ol class="breadcrumb">
+    <li class="active">Home</li>
+</ol>
+<div id="batch-list" class="page-container">
+    <div class="row">
+        <div id="new-payment" class="col-md-2">
+            <h3 class="page-title">@($"{Model.Type.GetDisplayName()}s")</h3>
+            <a href="@($"/batches/{Model.Type.ToString().ToLower()}/create")">Create Batch</a>
+            <br/>
+            <a href="@($"/settings/{Model.Type.ToString().ToLower()}")">Settings</a>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div id="recent-batches" class="col-md-8">
+            <ol id="payment-allocations">
+                @foreach (var header in Model.Batches)
+                {
+                    Html.RenderPartial("BatchHeader", header);
+                }
+            </ol>
+            <div id="pager">
+                @Html.Pager(Model.Batches.PageSize, Model.Batches.PageNumber, Model.Batches.TotalItemCount).Options(o => o.SetPreviousPageText("Prev").SetNextPageText("Next"))
+                <p>Showing @showingFrom to @showingTo of @Model.Batches.TotalItemCount @Model.Type.GetDisplayName() Batches</p>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+</div>
