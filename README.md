@@ -32,7 +32,7 @@ Note1: MS SQL Server 2022 is the latest version to work with the app.
 
 Note2: I don't remember how the EF migrations works. The latest schema is captured in `DirectDebit.Models/migrations/scripts/BaseSchema.sql`
 
-Create a database on the SQL Server called something like `directdebits`. The run the BaseSchema.sql script to setup the DB schema (technically you should be using the EF Migrations but I honestly don't remember exactly how one goes about this at the time of writing).
+Create a database on the SQL Server called something like `directdebits`. Then run the BaseSchema.sql script to setup the DB schema (technically you should be using the EF Migrations but I honestly don't remember exactly how one goes about this at the time of writing).
 
 ##### Exact Online Developer Account
 
@@ -47,7 +47,7 @@ The client id and client secret provided when setting up an Exact App are requir
 
 Other config in `web.config` to be updated includes:
 
-* `TokenPassPhrase` is for storing the access token at rest - just enter something like a 32 random value for this.
+* `TokenPassPhrase` is for storing the access token at rest - just update with a 32 random value for this. Don't use the default that is currently there.
 * The connection string for the `SynergyDbContext` should be updated if the default localhost string is not sufficient (i.e. it needs to point to another IP, the database name is different, etc.)
 
 Most other config probably should not need to be updated.
